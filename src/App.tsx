@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <div className="flex w-screen items-center flex-col">
-        <header className="container px-4 flex justify-end h-16 py-4">
+        <header className="header">
           <nav className="hidden md:flex text-lg font-semibold justify-end gap-4">
             <a>Works</a>
             <a>Blog</a>
@@ -87,7 +87,9 @@ function App() {
               <h2 className="text-2xl mt-4">Featured Work</h2>
               <div className="flex flex-col gap-8 mt-6">
                 <CardProject
-                  imageUrl="https://picsum.photos/id/234/600/400"
+                  imageUrl={`https://picsum.photos/id/${Math.floor(
+                    Math.random() * 300
+                  )}/600/400`}
                   date="2024"
                   label="Ecommerce"
                   title="Ecommerce Website"
@@ -98,7 +100,9 @@ function App() {
                   modi cumque saepe nihil soluta.
                 </CardProject>
                 <CardProject
-                  imageUrl="https://picsum.photos/id/232/600/400"
+                  imageUrl={`https://picsum.photos/id/${Math.floor(
+                    Math.random() * 300
+                  )}/600/400`}
                   date="2024"
                   label="Dashboard"
                   title="Dashboard Website"
@@ -109,10 +113,12 @@ function App() {
                   modi cumque saepe nihil soluta.
                 </CardProject>
                 <CardProject
-                  imageUrl="https://picsum.photos/id/231/600/400"
+                  imageUrl={`https://picsum.photos/id/${Math.floor(
+                    Math.random() * 300
+                  )}/600/400`}
                   date="2024"
-                  label="Design"
-                  title="Designing Dashboards"
+                  label="Game"
+                  title="Simple memory Game"
                 >
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
                   inventore reprehenderit placeat quod corrupti nam pariatur!

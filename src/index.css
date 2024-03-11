@@ -18,3 +18,7 @@ h1 {
 p {
   @apply text-sm font-light;
 }
+
+.header {
+  @apply container px-4 flex justify-end h-16 py-4;
+}
