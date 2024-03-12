@@ -1,23 +1,23 @@
 import { NavLink } from "react-router-dom";
 
+export interface items {
+  title?: string;
+  date?: string;
+  label?: string;
+  body?: string;
+  id?: number;
+}
+
 export default function CardPost({
-  title,
-  date,
-  label,
-  children,
   border,
   height,
   padding,
-  id,
+  item,
 }: {
-  title: string;
-  date: string;
-  label: string;
-  children: React.ReactNode;
   border?: boolean;
   height?: string;
   padding?: boolean;
-  id?: number;
+  item: items;
 }) {
   return (
     <div
@@ -27,15 +27,18 @@ export default function CardPost({
         border && "border-b border-b-slate-200"
       }`}
     >
-      <NavLink to={`/blogs/${id}`} className="text-xl font-semibold mt-4 ">
-        {title}
+      <NavLink
+        to={`/blogs/${item?.id}`}
+        className="text-xl font-semibold mt-2 "
+      >
+        {item?.title}
       </NavLink>
-      <div className="flex items-center gap-2 mt-4">
-        <p className="text-sm font-light">{date}</p>
+      <div className="flex items-center gap-2 mt-2">
+        <p className="text-sm font-light">{item?.date || "2024"} </p>
         <p className="text-sm font-light">|</p>
-        <p className="text-sm font-light">{label}</p>
+        <p className="text-sm font-light">{item?.label || "Your Label"}</p>
       </div>
-      <p className="mt-4">{children}</p>
+      <p className="mt-2 lg:w-3/4">{item?.body}</p>
     </div>
   );
 }

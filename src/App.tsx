@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Blog from "./components/pages/Blog";
 import Home from "./components/pages/Home";
@@ -9,24 +10,27 @@ import Header from "./components/templates/Header";
 import WorkDetail from "./components/templates/WorkDetail";
 import WorkTile from "./components/templates/WorkTile";
 
+const queryClient = new QueryClient();
 function App() {
   return (
     <>
-      <Router>
-        <Header />
-        <Routes>
-          <Route path={"/"} element={<Home />} />
-          <Route path={"/blogs"} element={<Blog />}>
-            <Route index element={<BlogTile />} />
-            <Route path={":id"} element={<BlogDetail />} />
-          </Route>
-          <Route path={"/works"} Component={Work} element={<Work />}>
-            <Route index element={<WorkTile />} />
-            <Route path={":id"} element={<WorkDetail />} />
-          </Route>
-        </Routes>
-        <Footer />
-      </Router>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path={"/"} element={<Home />} />
+            <Route path={"/blogs"} element={<Blog />}>
+              <Route index element={<BlogTile />} />
+              <Route path={":id"} element={<BlogDetail />} />
+            </Route>
+            <Route path={"/works"} Component={Work} element={<Work />}>
+              <Route index element={<WorkTile />} />
+              <Route path={":id"} element={<WorkDetail />} />
+            </Route>
+          </Routes>
+          <Footer />
+        </Router>
+      </QueryClientProvider>
     </>
   );
 }

@@ -1,8 +1,12 @@
 import { NavLink } from "react-router-dom";
-import CardPost from "../fragments/CardPost";
-import CardProject from "../fragments/CardProject";
+import { getPost } from "../../services/getPost";
+import CardPost, { items } from "../fragments/CardPost";
+import CardProject, { project } from "../fragments/CardProject";
+import { data } from "./WorkTile";
 
 export default function Content() {
+  const { data: posts = {} } = getPost();
+
   return (
     <main>
       <div className="bg-secondary w-screen h-fit py-4 flex pt-4 justify-center">
@@ -14,28 +18,15 @@ export default function Content() {
             </NavLink>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-2 justify-center items-center">
-            <CardPost
-              padding={true}
-              title="Making Design System from Stratch"
-              date="20 feb 2022"
-              label="Design, Pattern"
-            >
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero
-              nostrum ea consequatur quas, dolores laudantium animi alias esse
-              labore in quidem ut quibusdam aperiam officia dignissimos dicta
-              vitae totam debitis?
-            </CardPost>
-            <CardPost
-              padding={true}
-              title="Making Design System from Stratch"
-              date="20 feb 2022"
-              label="Design, Pattern"
-            >
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero
-              nostrum ea consequatur quas, dolores laudantium animi alias esse
-              labore in quidem ut quibusdam aperiam officia dignissimos dicta
-              vitae totam debitis?
-            </CardPost>
+            {posts.length > 0 ? (
+              posts
+                ?.slice(0, 2)
+                ?.map((item: items) => (
+                  <CardPost padding={true} key={item.id} item={item} />
+                ))
+            ) : (
+              <div>loading...</div>
+            )}
           </div>
         </div>
       </div>
@@ -43,45 +34,9 @@ export default function Content() {
         <div className="container px-4 ">
           <h2 className="text-2xl mt-4">Featured Work</h2>
           <div className="flex flex-col gap-8 mt-6">
-            <CardProject
-              imageUrl={`https://picsum.photos/id/${Math.floor(
-                Math.random() * 300
-              )}/600/400`}
-              date="2024"
-              label="Ecommerce"
-              title="Ecommerce Website"
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
-              inventore reprehenderit placeat quod corrupti nam pariatur! Ullam
-              sequi tempora sunt et architecto! Facere quasi dolorem, modi
-              cumque saepe nihil soluta.
-            </CardProject>
-            <CardProject
-              imageUrl={`https://picsum.photos/id/${Math.floor(
-                Math.random() * 300
-              )}/600/400`}
-              date="2024"
-              label="Dashboard"
-              title="Dashboard Website"
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
-              inventore reprehenderit placeat quod corrupti nam pariatur! Ullam
-              sequi tempora sunt et architecto! Facere quasi dolorem, modi
-              cumque saepe nihil soluta.
-            </CardProject>
-            <CardProject
-              imageUrl={`https://picsum.photos/id/${Math.floor(
-                Math.random() * 300
-              )}/600/400`}
-              date="2024"
-              label="Game"
-              title="Simple memory Game"
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
-              inventore reprehenderit placeat quod corrupti nam pariatur! Ullam
-              sequi tempora sunt et architecto! Facere quasi dolorem, modi
-              cumque saepe nihil soluta.
-            </CardProject>
+            {data.map((item: project) => (
+              <CardProject key={item.id} item={item} />
+            ))}
           </div>
         </div>
       </div>

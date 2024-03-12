@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="w-full h-[40rem] flex flex-col-reverse duration-300 transition-all ease-in-out md:flex-row justify-center items-center ">
         <div className="flex-1 text-center md:text-left  ">
           <h1 className="text-slate-700 ">
-            Hi, I am Kin <br /> Front End Dev
+            Hi, I am Kin <br /> Web Developer
           </h1>
           <p className="mt-8">
             I'm a frontend developer focused on creating engaging and responsive
