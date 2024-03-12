@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { FaBars } from "react-icons/fa";
+import Navbar from "../elements/Navbar";
 import Modal from "../fragments/Modal";
 
 export default function Header() {
@@ -9,11 +10,7 @@ export default function Header() {
   return (
     <>
       <header className="header">
-        <nav className="hidden md:flex text-lg font-semibold justify-end gap-4">
-          <a>Works</a>
-          <a>Blog</a>
-          <a>Contacs</a>
-        </nav>
+        <Navbar className="hidden" />
         <button
           onClick={() => setShowModal((showModal) => !showModal)}
           className="md:hidden text-3xl mr-4"
@@ -22,7 +19,9 @@ export default function Header() {
         </button>
       </header>
       {createPortal(
-        <Modal rightFull={showModal} setModal={setShowModal} />,
+        <Modal rightFull={showModal} setModal={setShowModal}>
+          <Navbar className="flex flex-col" />
+        </Modal>,
         document.body
       )}
     </>
