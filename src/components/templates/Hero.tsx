@@ -28,7 +28,7 @@ export default function Hero() {
             dedication to learning and growing, I'm ready to bring added value
             to every project I work on.
           </p>
-          <button className="bg-[#FF6464] text-white px-6 py-3 mt-8">
+          <button className="bg-[#FF6464] rounded-md text-white px-6 py-3 mt-8">
             Download Resume
           </button>
         </div>
