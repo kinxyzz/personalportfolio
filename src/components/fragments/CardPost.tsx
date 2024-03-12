@@ -21,7 +21,7 @@ export default function CardPost({
 }) {
   return (
     <div
-      className={`${padding && "px-2 md:py-4 md:px-10"} w-full ${
+      className={`${padding && "p-4 md:py-4 md:px-10"}  w-full ${
         height === "fit" ? "h-fit" : "h-72"
       } overflow-hidden bg-white rounded-md ${
         border && "border-b border-b-slate-200"
