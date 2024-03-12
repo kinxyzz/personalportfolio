@@ -1,5 +1,4 @@
 import Content from "../templates/Content";
-import Footer from "../templates/Footer";
 import Header from "../templates/Header";
 import Hero from "../templates/Hero";
 
@@ -9,7 +8,6 @@ export default function Home() {
       <Header />
       <Hero />
       <Content />
-      <Footer />
     </div>
   );
 }

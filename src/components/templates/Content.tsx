@@ -4,7 +4,7 @@ import CardProject from "../fragments/CardProject";
 export default function Content() {
   return (
     <main>
-      <div className="bg-[#EDF7FA] w-screen h-fit py-4 flex pt-4 justify-center">
+      <div className="bg-secondary w-screen h-fit py-4 flex pt-4 justify-center">
         <div className="container px-4">
           <div className="flex justify-between items-center w-full h-16">
             <h2 className="text-2xl">Recent Posts</h2>
