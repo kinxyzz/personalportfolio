@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function CardProject({
   title,
@@ -6,12 +7,14 @@ export default function CardProject({
   date,
   label,
   children,
+  id,
 }: {
   title: string;
   imageUrl: string;
   date: string;
   label: string;
   children: React.ReactNode;
+  id?: number;
 }) {
   return (
     <div className="flex flex-col md:flex-row gap-4 pb-2 border-b-2 border-gray-200">
@@ -21,7 +24,9 @@ export default function CardProject({
         alt=""
       />
       <div>
-        <h3 className="text-3xl font-bold">{title}</h3>
+        <NavLink to={`/projects/${id}`} className="text-3xl font-bold">
+          {title}
+        </NavLink>
         <div className="flex gap-6 items-center mt-4">
           <p className="px-4 py-1 rounded-lg bg-slate-800 font-semibold text-white ">
             {date}

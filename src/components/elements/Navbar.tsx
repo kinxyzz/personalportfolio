@@ -5,8 +5,9 @@ export default function Navbar({ className }: { className?: string }) {
     <nav
       className={`${className} md:flex text-lg font-semibold justify-end gap-4`}
     >
-      <NavLink to={"/"}>Works</NavLink>
-      <NavLink to={"/blog"}>Blog</NavLink>
+      <NavLink to={"/"}>Home</NavLink>
+      <NavLink to={"/works"}>Works</NavLink>
+      <NavLink to={"/blogs"}>Blog</NavLink>
       <NavLink to={"/contact"}>Contact</NavLink>
     </nav>
   );

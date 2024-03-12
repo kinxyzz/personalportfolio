@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import CardPost from "../fragments/CardPost";
 import CardProject from "../fragments/CardProject";
 
@@ -8,10 +9,13 @@ export default function Content() {
         <div className="container px-4">
           <div className="flex justify-between items-center w-full h-16">
             <h2 className="text-2xl">Recent Posts</h2>
-            <p className="text-blue-400 self-end">view all</p>
+            <NavLink to={"/blogs"} className="text-blue-400 self-end">
+              view all
+            </NavLink>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-2 justify-center items-center">
             <CardPost
+              padding={true}
               title="Making Design System from Stratch"
               date="20 feb 2022"
               label="Design, Pattern"
@@ -22,6 +26,7 @@ export default function Content() {
               vitae totam debitis?
             </CardPost>
             <CardPost
+              padding={true}
               title="Making Design System from Stratch"
               date="20 feb 2022"
               label="Design, Pattern"
