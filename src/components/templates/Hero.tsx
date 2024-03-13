@@ -11,9 +11,9 @@ export default function Hero() {
             <TypeAnimation
               sequence={[
                 // Same substring at the start will only be typed out once, initially
-                "Web Developer",
+                "Web Dev",
                 1000, // wait 1s before replacing "Mice" with "Hamsters"
-                "Frontend Developer",
+                "Frontend Dev",
                 1000,
               ]}
               wrapper="span"
