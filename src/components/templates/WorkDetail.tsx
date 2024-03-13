@@ -1,21 +1,27 @@
-
+import { getProject } from "../../services/getProject";
 
 export default function WorkDetail() {
+  const { data: project } = getProject();
 
+  if (Array.isArray(project)) {
+    return <div>loading...</div>;
+  }
+
+  const desc = project?.body?.split("\n");
 
   return (
     <div className="flex flex-col items-center ">
       <div className="container px-4">
-        <h2 className="text-4xl font-bold mb-2">Web Ecommerce</h2>
+        <h2 className="text-4xl font-bold mb-2">{project?.title}</h2>
         <div className="flex gap-6 items-center mb-4">
           <p className="px-4 py-1 rounded-lg bg-slate-800 font-semibold text-white ">
-            2024
+            {project?.created_at?.substring(0, 4)}
           </p>
-          <p className="text-gray-400 text-xl">WebCommerce</p>
+          <p className="text-gray-400 text-xl">{project?.label}</p>
         </div>
         <div className="flex justify-center md:w-3/5 mx-auto rounded-md mt-2">
           <img
-            src={"/batikproject.webp"}
+            src={project?.imageUrl || ""}
             width={"100%"}
             height={"100%"}
             alt=""
@@ -23,32 +29,36 @@ export default function WorkDetail() {
         </div>
         <div className="lg:w-3/4">
           <h3 className="text-2xl font-bold mb-2">Description</h3>
-          <p>
-            proyek webcommerce yang saya kembangkan menekankan pada pengalaman
-            pengguna yang optimal. Saya fokus pada desain responsif dan estetis
-            yang meningkatkan interaksi pengguna dengan platform, serta
-            fungsionalitas yang kuat untuk memastikan efisiensi dalam manajemen
-            inventaris dan navigasi yang mudah. Meskipun tidak melibatkan
-            integrasi pembayaran, proyek-proyek ini mencerminkan dedikasi saya
-            dalam menciptakan solusi e-commerce yang sesuai dengan kebutuhan
-            klien dan pengguna. Dengan pendekatan yang cermat dan teliti, saya
-            berupaya menciptakan pengalaman belanja online yang menarik dan
-            memikat.
-          </p>
+          {desc?.map((item, index) => (
+            <p key={index} className="mt-2">
+              {item}
+            </p>
+          ))}
+          <h3 className="text-2xl font-bold mt-2">Demo</h3>
+          <div className="flex mt-2  gap-2">
+            <a
+              className="px-4 py-1 shadow-md rounded-md bg-secondary "
+              href={project?.repository?.toString()}
+            >
+              {project?.repository ? "Repo Avaiable" : "Repo Secret"}
+            </a>
+            <a
+              className="px-4 py-1 shadow-md rounded-md bg-secondary "
+              href={project?.webUrl?.toString()}
+            >
+              {project?.webUrl ? "Demo Avaiable" : "Demo Secret"}
+            </a>
+          </div>
           <h3 className="text-2xl font-bold mt-2">Tech Stack</h3>
           <div className="flex gap-2 flex-wrap mt-2">
-            <p className="border-2 border-slate-600 w-fit rounded-md px-3 py-1 drop-shadow-md ">
-              NextJs
-            </p>
-            <p className="border-2 border-slate-600 w-fit rounded-md px-3 py-1 drop-shadow-md ">
-              React
-            </p>
-            <p className="border-2 border-slate-600 w-fit rounded-md px-3 py-1 drop-shadow-md ">
-              Tanstack Query
-            </p>
-            <p className="border-2 border-slate-600 w-fit rounded-md px-3 py-1 drop-shadow-md ">
-              Supabase
-            </p>
+            {project?.techStack.map((item) => (
+              <p
+                key={item.name}
+                className=" shadow-md bg-primary text-secondary w-fit rounded-md px-3 py-1 drop-shadow-md "
+              >
+                {item.name}
+              </p>
+            ))}
           </div>
         </div>
       </div>

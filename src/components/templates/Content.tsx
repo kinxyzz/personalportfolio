@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { getPost } from "../../services/getPost";
+import { getProject } from "../../services/getProject";
 import CardPost, { items } from "../fragments/CardPost";
 import CardProject, { project } from "../fragments/CardProject";
-import { data } from "./WorkTile";
 
 export default function Content() {
   const { data: posts = {} } = getPost();
+  const { data: projectPortfolio = [] } = getProject();
 
   return (
     <main>
@@ -32,11 +33,20 @@ export default function Content() {
       </div>
       <div className=" h-fit py-2 mb-24 w-screen flex justify-center">
         <div className="container px-4 ">
-          <h2 className="text-2xl mt-4">Featured Work</h2>
+          <div className="flex justify-between items-center">
+            <h2 className="text-2xl mt-4">Featured Work</h2>
+            <NavLink className="text-blue-400 self-end" to="./works">
+              ShowMore...
+            </NavLink>
+          </div>
+
           <div className="flex flex-col gap-8 mt-6">
-            {data.map((item: project) => (
-              <CardProject key={item.id} item={item} />
-            ))}
+            {Array.isArray(projectPortfolio) &&
+              projectPortfolio
+                .slice(0, 3)
+                ?.map((item: project) => (
+                  <CardProject key={item.id} item={item} />
+                ))}
           </div>
         </div>
       </div>

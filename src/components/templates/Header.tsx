@@ -7,7 +7,7 @@ import Modal from "../fragments/Modal";
 
 export default function Header() {
   const [showModal, setShowModal] = useState(false);
-  console.log(showModal);
+
   return (
     <>
       <header className="header">
