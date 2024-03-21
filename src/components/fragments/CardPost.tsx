@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export interface items {
   title?: string;
-  date?: string;
+  created_at?: string;
   label?: string;
   body?: string;
   id?: number;
@@ -19,6 +19,8 @@ export default function CardPost({
   padding?: boolean;
   item: items;
 }) {
+  const textOnly = item?.body?.replace(/<[^>]*>/g, "");
+
   return (
     <div
       className={`${padding && "p-4 md:py-4 md:px-10"}  w-full ${
@@ -29,19 +31,18 @@ export default function CardPost({
     >
       <NavLink
         to={`/blogs/${item?.id}`}
-        className="text-xl text-slate-600 font-semibold mt-2 "
+        className="text-xl text-slate-600 font-semibold mt-2"
       >
-        Ini Judul
+        {item?.title}
       </NavLink>
       <div className="flex text-slate-700 items-center gap-2 mt-2">
-        <p className="text-sm font-light">{"Ini Tanggal" || "2024"} </p>
+        <p className="text-sm font-light">
+          {item?.created_at?.substring(0, 4)}
+        </p>
         <p className="text-sm font-light">|</p>
-        <p className="text-sm font-light">{"ini Label" || "Your Label"}</p>
+        <p className="text-sm font-light">{item?.label}</p>
       </div>
-      <p className="mt-2 lg:w-3/4">
-        {"Ini Description max 150 text" ||
-          item?.body?.substring(0, 158) + "..."}
-      </p>
+      <p className="mt-4 w-3/4">{textOnly?.substring(0, 150) + "..."}</p>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { getProject } from "../../services/getProject";
+import Badge from "../elements/Badge";
 
 export default function WorkDetail() {
   const { data: project } = getProject();
@@ -52,12 +53,7 @@ export default function WorkDetail() {
           <h3 className="text-2xl font-bold mt-2">Tech Stack</h3>
           <div className="flex gap-2 flex-wrap mt-2">
             {project?.techStack.map((item) => (
-              <p
-                key={item.name}
-                className=" shadow-md bg-primary text-secondary w-fit rounded-md px-3 py-1 drop-shadow-md "
-              >
-                {item.name}
-              </p>
+              <Badge key={item.name} name={item.name} />
             ))}
           </div>
         </div>
