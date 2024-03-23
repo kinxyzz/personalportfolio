@@ -5,7 +5,7 @@ import diff from "react-syntax-highlighter/dist/cjs/languages/prism/diff";
 import javascript from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
 import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
 import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
-import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
@@ -36,18 +36,18 @@ export default function MarkdownRenderer({
       rehypePlugins={[rehypeRaw]}
       components={{
         code({ node, inline, className, children, ...props }: any) {
-          const match = true;
+          const match = /language-(\w+)/.exec(className || "");
 
           return !inline && match ? (
             <SyntaxHighlighter
               customStyle={{
                 padding: "1rem",
-                minWidth: "400px",
+                minWidth: "40%",
                 width: "fit-content",
               }}
-              style={dracula}
+              style={materialDark}
               PreTag="div"
-              language={"jsx"}
+              language={match[1]}
               {...props}
               wrapLongLines={true}
             >
