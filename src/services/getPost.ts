@@ -1,24 +1,17 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { supabase } from "../utils/supabase";
 
 export async function fetchPost({ id }: { id?: string }) {
   if (id) {
-    const { data: blog } = await supabase
-      .from("blog")
-      .select("*")
-      .eq("id", Number(id))
-      .single();
-    return blog;
+    const res = await fetch(`https://dev.to/api/articles/${id}`);
+    const data = await res.json();
+    return data;
   }
 
-  let { data: blog, error } = await supabase.from("blog").select("*");
+  const res = await fetch("https://dev.to/api/articles?username=kinxyzz");
+  const data = await res.json();
 
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  return blog;
+  return data;
 }
 
 export function getPost() {

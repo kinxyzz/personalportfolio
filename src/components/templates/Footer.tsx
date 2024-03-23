@@ -15,7 +15,7 @@ export default function Footer() {
           <FaTwitter />
           <FaLinkedin />
         </div>
-        <p>Copyright ©2020 All rights reserved </p>
+        <p className="mb-4">&copy; 2023 Kin. All rights reserved.</p>
       </div>
     </footer>
   );

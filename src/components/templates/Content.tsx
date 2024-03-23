@@ -10,11 +10,11 @@ export default function Content() {
 
   return (
     <main>
-      <div className="bg-secondary w-screen h-fit py-4 flex pt-4 justify-center">
+      <div className="bg-secondary w-screen h-fit py-8 items-center flex justify-center">
         <div className="container px-4">
-          <div className="flex justify-between items-center w-full h-16">
-            <h2 className="text-2xl">Recent Posts</h2>
-            <NavLink to={"/blogs"} className="text-blue-400 self-end">
+          <div className="flex justify-between items-center">
+            <h2>Recent Posts</h2>
+            <NavLink to={"/blogs"} className="text-blue-400 mr-4 self-end">
               view all
             </NavLink>
           </div>
@@ -34,8 +34,11 @@ export default function Content() {
       <div className=" h-fit py-2 mb-24 w-screen flex justify-center">
         <div className="container px-4 ">
           <div className="flex justify-between items-center">
-            <h2 className="text-2xl mt-4">Featured Work</h2>
-            <NavLink className="text-blue-400 self-end" to="./works">
+            <h2>Featured Work</h2>
+            <NavLink
+              className="text-blue-400 mr-4 hover:text-primary self-end"
+              to="./works"
+            >
               ShowMore...
             </NavLink>
           </div>

@@ -3,6 +3,7 @@ import CardPost from "../fragments/CardPost";
 
 export default function BlogTile() {
   const { data: posts = [] } = getPost();
+  console.log(posts);
 
   return (
     <>
