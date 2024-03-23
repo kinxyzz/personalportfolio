@@ -1,30 +1,72 @@
+import { useRef, useState } from "react";
+import { FaCopy } from "react-icons/fa6";
 import Markdown from "react-markdown";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
-import diff from "react-syntax-highlighter/dist/cjs/languages/prism/diff";
-import javascript from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
-import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
-import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { Tooltip } from "react-tooltip";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-
-const languages = {
-  javascript: "javascript",
-  typescript: "typescript",
-  diff: "diff",
-  tsx: "tsx",
-  css: "css",
-};
-
-SyntaxHighlighter.registerLanguage(languages.javascript, javascript);
-SyntaxHighlighter.registerLanguage(languages.typescript, typescript);
-SyntaxHighlighter.registerLanguage(languages.diff, diff);
-SyntaxHighlighter.registerLanguage(languages.tsx, tsx);
-SyntaxHighlighter.registerLanguage(languages.css, css);
-
 type MarkdownRendererProps = {
   children: string;
+};
+
+const markDownSyntax = {
+  code({ node, inline, className, children, ...props }: any) {
+    const [active, setActive] = useState(true);
+    const codeRef = useRef(null);
+    const match = /language-(\w+)/.exec(className || "");
+    const customChildren = String(children).replace(/\n$/, "");
+    const handleCopy = () => {
+      const myboolean = !active;
+      setActive(myboolean);
+      console.log({ active, myboolean });
+
+      const el: any = codeRef.current;
+      navigator.clipboard
+        .writeText(el?.innerText)
+        .then(() => {
+          console.log("Text copied to clipboard");
+
+          // Hide tooltip after 1 second
+        })
+        .catch((error) => {
+          console.error("Failed to copy text to clipboard:", error);
+        })
+        .finally(() => {
+          setActive(true);
+        });
+    };
+    return !inline && match ? (
+      <div ref={codeRef} className="relative">
+        <SyntaxHighlighter
+          customStyle={{
+            padding: "1rem",
+            minWidth: "40%",
+          }}
+          style={materialDark}
+          PreTag="div"
+          language={match[1]}
+          {...props}
+          wrapLongLines={true}
+        >
+          {customChildren}
+        </SyntaxHighlighter>
+        <button
+          data-tooltip-content={active ? "Copy to Clipboard" : ""}
+          data-tooltip-id="copy-tooltip"
+          onClick={handleCopy}
+          className="absolute top-2 right-2 text-white text-2xl rounded-md cursor-pointer active:scale-95 active:text-primary"
+        >
+          <FaCopy />
+        </button>
+        <Tooltip id="copy-tooltip" />
+      </div>
+    ) : (
+      <code className={className} {...props}>
+        {children}
+      </code>
+    );
+  },
 };
 
 export default function MarkdownRenderer({
@@ -34,32 +76,7 @@ export default function MarkdownRenderer({
     <Markdown
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
-      components={{
-        code({ node, inline, className, children, ...props }: any) {
-          const match = /language-(\w+)/.exec(className || "");
-
-          return !inline && match ? (
-            <SyntaxHighlighter
-              customStyle={{
-                padding: "1rem",
-                minWidth: "40%",
-                width: "fit-content",
-              }}
-              style={materialDark}
-              PreTag="div"
-              language={match[1]}
-              {...props}
-              wrapLongLines={true}
-            >
-              {String(children).replace(/\n$/, "")}
-            </SyntaxHighlighter>
-          ) : (
-            <code className={className} {...props}>
-              {children}
-            </code>
-          );
-        },
-      }}
+      components={markDownSyntax}
     >
       {markdown}
     </Markdown>

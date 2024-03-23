@@ -6,12 +6,14 @@ export async function fetchPost({ id }: { id?: string }) {
     const res = await fetch(`https://dev.to/api/articles/${id}`);
     const data = await res.json();
     return data;
+  } else {
+    const res = await fetch(
+      "https://dev.to/api/articles?username=kinxyzz&per_page=10&page=1"
+    );
+    const data = await res.json();
+
+    return data;
   }
-
-  const res = await fetch("https://dev.to/api/articles?username=kinxyzz");
-  const data = await res.json();
-
-  return data;
 }
 
 export function getPost() {
@@ -24,7 +26,7 @@ export function getPost() {
 
   if (id) {
     queryClient.prefetchQuery({
-      queryKey: ["ProjectPortfolio", id],
+      queryKey: ["posts", id],
       queryFn: () => fetchPost({ id }),
     });
   }

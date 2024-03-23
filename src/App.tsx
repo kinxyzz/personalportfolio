@@ -10,7 +10,13 @@ import Header from "./components/templates/Header";
 import WorkDetail from "./components/templates/WorkDetail";
 import WorkTile from "./components/templates/WorkTile";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
+});
 function App() {
   return (
     <>
