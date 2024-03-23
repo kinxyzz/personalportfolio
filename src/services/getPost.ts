@@ -8,7 +8,7 @@ export async function fetchPost({ id }: { id?: string }) {
     return data;
   } else {
     const res = await fetch(
-      "https://dev.to/api/articles?username=kinxyzz&page=1"
+      "https://dev.to/api/articles?username=kinxyzz&per_page=10&page=1"
     );
     const data = await res.json();
 
