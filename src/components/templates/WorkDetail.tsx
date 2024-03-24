@@ -11,7 +11,7 @@ export default function WorkDetail() {
   const desc = project?.body?.split("\n");
 
   return (
-    <div className="flex flex-col items-center ">
+    <div id="workDetail" className="flex flex-col items-center ">
       <div className="container px-4">
         <h2 className="text-4xl font-bold mb-2">{project?.title}</h2>
         <div className="flex gap-6 items-center mb-4">
@@ -29,28 +29,28 @@ export default function WorkDetail() {
           />
         </div>
         <div className="lg:w-3/4">
-          <h3 className="text-2xl font-bold mb-2">Description</h3>
+          <h3>Description</h3>
           {desc?.map((item, index) => (
             <p key={index} className="mt-2">
               {item}
             </p>
           ))}
-          <h3 className="text-2xl font-bold mt-2">Demo</h3>
+          <h3>Demo</h3>
           <div className="flex mt-2  gap-2">
             <a
-              className="px-4 py-1 shadow-md rounded-md bg-secondary "
+              className="px-4 py-1 shadow-md rounded-md bg-secondary dark:bg-blue-400 "
               href={project?.repository?.toString()}
             >
               {project?.repository ? "Repo Avaiable" : "Repo Secret"}
             </a>
             <a
-              className="px-4 py-1 shadow-md rounded-md bg-secondary "
+              className="px-4 py-1 shadow-md rounded-md bg-secondary dark:bg-blue-400 "
               href={project?.webUrl?.toString()}
             >
               {project?.webUrl ? "Demo Avaiable" : "Demo Secret"}
             </a>
           </div>
-          <h3 className="text-2xl font-bold mt-2">Tech Stack</h3>
+          <h3>Tech Stack</h3>
           <div className="flex gap-2 flex-wrap mt-2">
             {project?.techStack.map((item) => (
               <Badge key={item.name} name={item.name} />
