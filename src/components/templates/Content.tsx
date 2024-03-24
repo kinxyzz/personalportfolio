@@ -10,7 +10,7 @@ export default function Content() {
 
   return (
     <main>
-      <div className="bg-secondary w-screen h-fit py-8 items-center flex justify-center">
+      <div className="bg-secondary dark:bg-darksecondary w-screen h-fit py-8 items-center flex justify-center">
         <div className="container px-4">
           <div className="flex justify-between items-center">
             <h2>Recent Posts</h2>

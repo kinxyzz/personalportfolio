@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="container px-4 py-2 mb-8">
       <div className="w-full h-[40rem] flex flex-col-reverse duration-300 transition-all ease-in-out md:flex-row justify-center items-center ">
         <div className="flex-1 text-center md:text-left  ">
-          <h1 className="text-slate-700 ">
+          <h1 className=" ">
             Hi, I am Kin <br />{" "}
             <TypeAnimation
               sequence={[
@@ -22,7 +22,7 @@ export default function Hero() {
               repeat={Infinity}
             />
           </h1>
-          <p className="mt-8 font-medium text-slate-700">
+          <p className="mt-8 font-medium">
             I'm a frontend developer focused on creating engaging and responsive
             user interfaces. With skills in HTML, CSS, and JavaScript, I craft
             captivating web designs with seamless user experiences. I also have
@@ -33,7 +33,8 @@ export default function Hero() {
           </p>
           <button className="bg-primary drop-shadow-sm rounded-md text-white px-6 py-3 mt-8">
             <div className="flex items-center gap-2">
-              <FaDownload className="animate-bounce" /> <p>Download Resume</p>
+              <FaDownload className="animate-bounce" />{" "}
+              <p className="text-inherit">Download Resume</p>
             </div>
           </button>
         </div>

@@ -12,23 +12,23 @@
 @tailwind utilities;
 
 h1 {
-  @apply text-4xl font-extrabold;
+  @apply text-4xl text-slate-800 dark:text-slate-300 font-extrabold;
 }
 
 h2 {
-  @apply text-2xl font-bold;
+  @apply text-2xl text-slate-700 dark:text-slate-300 font-bold;
 }
 
 p {
-  @apply font-light;
+  @apply font-normal text-slate-700 dark:text-slate-400;
 }
 
 .header {
-  @apply container px-4 flex justify-end h-16 py-4;
+  @apply container px-4 flex items-center md:justify-end justify-between h-16 py-4;
 }
 
 a {
-  @apply inline-block transition duration-300 ease-in-out;
+  @apply inline-block text-slate-700 dark:text-slate-300 transition duration-300 ease-in-out;
 }
 
 a:hover {
@@ -36,7 +36,12 @@ a:hover {
 }
 
 body {
-  @apply bg-slate-50;
+  @apply bg-slate-50 dark:bg-slate-800;
+}
+
+ol,
+li {
+  @apply list-decimal text-slate-800 dark:text-slate-300;
 }
 
 #workBody ol {
@@ -45,4 +50,63 @@ body {
 
 #workBody ol li {
   @apply mb-2 font-medium;
+}
+
+#blogDetail ul {
+  @apply list-disc pl-4;
+}
+
+#blogDetail ol {
+  @apply list-decimal pl-4;
+}
+
+#blogDetail ul li {
+  @apply mb-2;
+}
+
+#blogDetail p {
+  @apply font-normal;
+}
+
+#labelDarkmode {
+  width: 40px;
+  height: 20px;
+  position: relative;
+  display: block;
+  background: #ebebeb;
+  border-radius: 200px;
+  box-shadow: inset 0px 5px 15px rgba(51, 65, 85, 0.4),
+    inset 0px -5px 15px rgba(203, 213, 255, 0.4);
+  cursor: pointer;
+}
+
+#labelDarkmode:after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: -2px;
+  right: 0px;
+  background: linear-gradient(180deg, #ff6464, #b44444);
+  border-radius: 180px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#darkmode-toggle {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+#darkmode-toggle:checked + #labelDarkmode {
+  background: #242424;
+}
+#darkmode-toggle:checked + #labelDarkmode:after {
+  left: calc(100%-10px);
+  transform: translateX(-60%);
+  background: linear-gradient(180deg, rgb(203 213 255), rgb(51 65 85));
+}
+#labelDarkmode,
+#labelDarkmode:after {
+  transition: 0.3s;
 }

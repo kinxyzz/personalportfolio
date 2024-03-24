@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa6";
 import Markdown from "react-markdown";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { Tooltip } from "react-tooltip";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
@@ -42,8 +42,11 @@ const markDownSyntax = {
           customStyle={{
             padding: "1rem",
             minWidth: "40%",
+            borderRadius: "0.375rem",
+            boxShadow:
+              "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
           }}
-          style={materialDark}
+          style={atomDark}
           PreTag="div"
           language={match[1]}
           {...props}

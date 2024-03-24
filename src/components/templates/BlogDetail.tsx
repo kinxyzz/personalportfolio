@@ -10,7 +10,7 @@ export default function BlogDetail() {
 
   return (
     <div className="flex justify-center items-center ">
-      <div className="flex container flex-col gap-2 max-w-lg">
+      <div id="blogDetail" className="flex container flex-col gap-2 max-w-lg">
         <h2>{posts?.title}</h2>
         <MarkdownRenderer children={posts?.body_markdown} />
       </div>

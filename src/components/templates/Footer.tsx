@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className="w-screen h-36 flex items-center justify-center">
       <div className="container px-4 flex flex-col gap-4 items-center justify-center">
-        <div className="flex gap-4 text-4xl">
+        <div className="flex gap-4 text-primary text-4xl">
           <FaFacebookSquare />
           <FaInstagram />
           <FaTwitter />

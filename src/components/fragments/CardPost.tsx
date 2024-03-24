@@ -27,13 +27,13 @@ export default function CardPost({
     <div
       className={`${padding && "p-4 md:py-4 md:px-10"} drop-shadow-lg  w-full ${
         height === "fit" ? "h-fit" : "h-56"
-      } overflow-hidden bg-white rounded-md ${
-        border && "border-b border-b-slate-200"
+      } overflow-hidden bg-white dark:bg-gray-950 rounded-md ${
+        border && "border-b border-b-slate-200 dark:border-b-slate-700"
       }`}
     >
       <NavLink
         to={`/blogs/${item?.id}`}
-        className="text-xl text-slate-950  font-semibold mt-2"
+        className="text-xl  font-semibold mt-2"
       >
         {item?.title}
       </NavLink>
@@ -42,9 +42,11 @@ export default function CardPost({
           {item?.created_at?.substring(0, 4)}
         </p>
         <p className="text-sm font-light">|</p>
-        <p className="text-sm font-bold text-white bg-primary px-2 py-1 rounded-md">
-          {item?.tags.split(",")[0]}
-        </p>
+        {item?.tags && (
+          <p className="text-xs font-bold text-white  bg-primary px-3 py-0.5 rounded-sm">
+            {item?.tags.split(",")[0]}
+          </p>
+        )}
         {/* {item?.tag_list?.map((text) => (
           <p className="text-sm font-light bg-primary p-1 rounded-md text-white">
             {text}

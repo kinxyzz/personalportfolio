@@ -7,16 +7,28 @@ import Modal from "../fragments/Modal";
 
 export default function Header() {
   const [showModal, setShowModal] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const htmlClass = document.documentElement.classList;
+  darkMode ? htmlClass.add("dark") : htmlClass.remove("dark");
 
   return (
     <>
-      <header className="header">
+      <header className="header gap-4">
         <Navbar className="hidden" />
+        <div className="-mt-6">
+          <input
+            type="checkbox"
+            id="darkmode-toggle"
+            onChange={() => setDarkMode((darkMode) => !darkMode)}
+          />
+          <label id="labelDarkmode" htmlFor="darkmode-toggle" />
+        </div>
         <button
           onClick={() => setShowModal((showModal) => !showModal)}
           className={`md:hidden ${
             showModal && "rotate-90"
-          } transition-all ease-in-out duration-500 text-3xl mr-4`}
+          } transition-all ease-in-out text-slate-700 dark:text-slate-200 duration-500 text-3xl mr-4`}
         >
           {showModal ? <GrClose className="" /> : <FaBars />}
         </button>
