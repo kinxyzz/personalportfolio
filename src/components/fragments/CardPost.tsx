@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import Badge from "../elements/Badge";
 
 export interface items {
   title?: string;
@@ -42,16 +43,7 @@ export default function CardPost({
           {item?.created_at?.substring(0, 4)}
         </p>
         <p className="text-sm font-light">|</p>
-        {item?.tags && (
-          <p className="text-xs font-bold text-white  bg-primary px-3 py-0.5 rounded-sm">
-            {item?.tags.split(",")[0]}
-          </p>
-        )}
-        {/* {item?.tag_list?.map((text) => (
-          <p className="text-sm font-light bg-primary p-1 rounded-md text-white">
-            {text}
-          </p>
-        ))} */}
+        {item?.tags && <Badge height={0.5} name={item?.tags.split(",")[0]} />}
       </div>
       <div className="mt-4 text-sm text-left ">
         <p className="">{item.description}</p>

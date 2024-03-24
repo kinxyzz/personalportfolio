@@ -39,9 +39,12 @@ body {
   @apply bg-slate-50 dark:bg-slate-800;
 }
 
-ol,
+ol {
+  @apply list-decimal text-slate-800 dark:text-slate-400;
+}
+
 li {
-  @apply list-decimal text-slate-800 dark:text-slate-300;
+  @apply list-disc text-slate-800 dark:text-slate-400;
 }
 
 #workBody ol {

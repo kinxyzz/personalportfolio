@@ -43,9 +43,6 @@ export default function Hero() {
             <div className="absolute right-0 mx-auto w-52 h-52 md:w-72 md:h-72 rounded-full bg-red-400 overflow-hidden flex items-center justify-center">
               <img
                 className="rounded w-full h-full md:w-full md:h-full"
-                // src={`https://picsum.photos/id/${Math.floor(
-                //   Math.random() * 300
-                // )}/600/400`}
                 src="https://portoxyz.vercel.app/static/media/avatar.fe624fbd8feafd50209d.png"
                 alt=""
               />
