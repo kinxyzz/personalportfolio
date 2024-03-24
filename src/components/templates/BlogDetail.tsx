@@ -1,11 +1,12 @@
 import { getPost } from "../../services/getPost";
+import Loading from "../elements/Loading";
 import MarkdownRenderer from "../elements/Markdown";
 
 export default function BlogDetail() {
   const { data: posts } = getPost();
 
   if (Array.isArray(posts)) {
-    return <div>loading...</div>;
+    return <Loading />;
   }
 
   return (

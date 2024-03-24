@@ -47,7 +47,7 @@ ol {
   @apply list-decimal text-slate-800 dark:text-slate-400;
 }
 
-li {
+ul {
   @apply list-disc text-slate-800 dark:text-slate-400;
 }
 

@@ -1,11 +1,12 @@
 import { getProject } from "../../services/getProject";
 import Badge from "../elements/Badge";
+import Loading from "../elements/Loading";
 
 export default function WorkDetail() {
   const { data: project } = getProject();
 
   if (Array.isArray(project)) {
-    return <div>loading...</div>;
+    return <Loading />;
   }
 
   const desc = project?.body?.split("\n");
