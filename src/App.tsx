@@ -3,6 +3,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Suspense, lazy } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Loading from "./components/elements/Loading";
+import Test from "./components/pages/Test";
 
 const Home = lazy(() => import("./components/pages/Home"));
 const Blog = lazy(() => import("./components/pages/Blog"));
@@ -31,6 +32,7 @@ function App() {
           <Suspense fallback={<Loading />}>
             <Routes>
               <Route path={"/"} element={<Home />} />
+              <Route path={"/test"} element={<Test />} />
               <Route path={"/blogs"} element={<Blog />}>
                 <Route index element={<BlogTile />} />
                 <Route path={":id"} element={<BlogDetail />} />
