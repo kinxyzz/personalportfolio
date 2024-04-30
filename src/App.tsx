@@ -37,7 +37,7 @@ function App() {
                 <Route index element={<BlogTile />} />
                 <Route path={":id"} element={<BlogDetail />} />
               </Route>
-              <Route path={"/works"} Component={Work} element={<Work />}>
+              <Route path={"/works"} element={<Work />}>
                 <Route index element={<WorkTile />} />
                 <Route path={":id"} element={<WorkDetail />} />
               </Route>
@@ -52,3 +52,4 @@ function App() {
 }
 
 export default App;
+
